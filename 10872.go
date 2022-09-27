@@ -6,16 +6,19 @@ import (
 	"os"
 )
 
-func main() {
-	var N int
+func factorial(num int) int {
+	if num == 0 {
+		return 1
+	}
+	return num * factorial(num-1)
+}
 
+func f_10872() {
+	var N int
 	reader := bufio.NewReader(os.Stdin)
 	writer := bufio.NewWriter(os.Stdout)
 	defer writer.Flush()
 
 	fmt.Fscan(reader, &N)
-
-	for i := 1; i < 10; i++ {
-		fmt.Fprintln(writer, N, "*", i, "=", N*i)
-	}
+	fmt.Fprint(writer, factorial(N))
 }
